@@ -1,9 +1,9 @@
 # WhatsTheWeatherOutside
-An application to see the weather in different locations.
+An application to see the weather conditions in different locations.
 
 
 ## Description
-Once the user types in a cities name the weather forcast will then be pulled from a third party API to show the weather outside. The application shows the current weather as well as a 5 day forcast into the future. The cities typed into the search box are then locally stored so the user can easily look again at the weather in a location already typed into the search area.
+Once the user types in a cities name the weather forcast will then be pulled from a third party API to show the weather outside. The application shows the current weather as well as a 5 day forecast into the future. The cities typed into the search box are then locally stored so the user can easily look again at the weather in a location already typed into the search area.
 
 The deployed URL - 
 
