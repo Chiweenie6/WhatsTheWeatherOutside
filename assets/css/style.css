@@ -12,3 +12,11 @@ h1 {
 .theWeather {
     margin: 20px;
 }
+
+.currentDay {
+    background-color: forestgreen;
+}
+
+.nextFive {
+    background-color: darkcyan;
+}
