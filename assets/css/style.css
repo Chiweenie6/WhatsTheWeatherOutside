@@ -1,0 +1,14 @@
+
+main {
+    display: flex;
+}
+
+
+h1 {
+    background-color: aquamarine;
+    text-align: center;
+}
+
+.theWeather {
+    margin: 20px;
+}
