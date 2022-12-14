@@ -23,7 +23,7 @@
                 <a class="navbar-brand">City Name</a>
                 <form id="cityFind" class="d-flex" role="search">
                     <input id="cityName" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success searchButton" type="submit">Search</button>
+                    <button id="searchButton" class="btn btn-outline-success" type="button" onclick="saveCityName()">Find City</button>
                 </form>
             </div>
         </nav>
@@ -49,12 +49,12 @@
                     </div>
                     <div id="description"></div>
                     <div id="temp"></div>
+                    <div id="feelsLike"></div>
                     <div id="tempRange"></div>
-                    <div id="coordLat"></div>
-                    <div id="coordLon"></div>
                     <div id="wind"></div>
                     <div id="humidity"></div>
-                    <div id="feelsLike"></div> 
+                    <div id="coordLat"></div>
+                    <div id="coordLon"></div> 
                   </div>
 
 
