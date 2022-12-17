@@ -9,12 +9,36 @@ h1 {
     text-align: center;
 }
 
+#day1 h2 {
+    background-color: rgb(255, 251, 0);
+}
+
+#day2 h2 {
+    background-color: rgb(72, 255, 0);
+}
+
+#day3 h2 {
+    background-color: rgb(0, 255, 234);
+}
+
+#day4 h2 {
+    background-color: rgb(153, 0, 255);
+}
+
+#day5 h2 {
+    background-color: rgb(255, 0, 76);
+}
+
 .theWeather {
     margin: 20px;
 }
 
 .currentDay {
     background-color: forestgreen;
+}
+
+#location {
+    background-color: darkorange;
 }
 
 .nextFive {
