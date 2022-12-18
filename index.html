@@ -10,15 +10,15 @@
     <title>Whats the Weather Outside?</title>
 </head>
 
-<body>
+<body class="">
 
     <div>
         <h1>☀️The Weather Outside🌦️</h1>
     </div>
 
-    <main class="container">
+    <main class="container-fluid d-flex">
 
-        <section class="col-3 row">
+        <section class="col-3 row justify-content-start">
             <nav class="navbar bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand">City Name</a>
@@ -32,24 +32,19 @@
             </nav>
 
             <div id="oldSearch" class="list-group">
-                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
-                    The current button
-                </button>
-                <button type="button" class="list-group-item list-group-item-action">A second button item</button>
-                <button type="button" class="list-group-item list-group-item-action">A third button item</button>
-                <button type="button" class="list-group-item list-group-item-action">A fourth button item</button>
-                <button type="button" class="list-group-item list-group-item-action" disabled>A disabled button
-                    item</button>
+                
+                <p id="savedCity"></p>
+                
             </div>
         </section>
 
-        <section class="theWeather col-9 row">
-            <div class="">
+        <section id="weatherInformation" class="theWeather col-9 row">
+            <div class="d-flex flex-column justify-content-center">
                 <h2 class="currentDay">The Current Weather Outside</h2>
 
-                <div id="currentDay">
+                <div id="currentDay" class="col-6">
                     <div id="location">
-                        <h2>City :</h2>
+                        <h2>City</h2>
                     </div>
                     
                     <div id="dt"></div>
@@ -65,10 +60,10 @@
                 </div>
             </div>
 
-            <div class="nextFiveDays col-12">
+            <div class="nextFiveDays row col-12">
                 <h2 class="nextFive">Next Five Day Forecast</h2>
 
-                <div id="day1" class="col-12">
+                <div id="day1" class="col-6">
                     <div id="">
                         <h2>Day 1</h2>
                     </div>
@@ -82,7 +77,7 @@
                     <div id="humidity4"></div>
                 </div>
 
-                <div id="day2" class="col-3">
+                <div id="day2" class="col-6">
                     <div id="">
                         <h2>Day 2</h2>
                     </div>
@@ -96,7 +91,7 @@
                     <div id="humidity12"></div>
                 </div>
 
-                <div id="day3" class="col-3">
+                <div id="day3" class="col-4">
                     <div id="">
                         <h2>Day 3</h2>
                     </div>
@@ -110,7 +105,7 @@
                     <div id="humidity20"></div>
                 </div>
 
-                <div id="day4" class="col-3">
+                <div id="day4" class="col-4">
                     <div id="">
                         <h2>Day 4</h2>
                     </div>
@@ -124,7 +119,7 @@
                     <div id="humidity28"></div>
                 </div>
 
-                <div id="day5" class="col-3">
+                <div id="day5" class="col-4">
                     <div id="">
                         <h2>Day 5</h2>
                     </div>

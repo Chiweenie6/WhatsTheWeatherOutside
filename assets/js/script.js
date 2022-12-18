@@ -11,7 +11,18 @@ function saveCityName() {
 
   weatherFinder(inputCity);
 
-  var citySave = JSON.stringify(inputCity);
+  localStorage.setItem("city", inputCity);
+  saveLastSearch();
+}
+
+function saveLastSearch() {
+  var savedCity = localStorage.getItem("city");
+  console.log(savedCity);
+
+  var cityButton = document.createElement("BUTTON");
+  var cityButtonCity = document.createTextNode(savedCity);
+  cityButton.appendChild(cityButtonCity);
+  document.getElementById("savedCity").appendChild(cityButton);
 }
 
 //  Fetching weather information for the current day from the openweather API, using a cities name
@@ -21,7 +32,8 @@ function weatherFinder(city) {
     "https://api.openweathermap.org/data/2.5/weather?q=" +
       city +
       "&appid=" +
-      key + "&units=imperial"
+      key +
+      "&units=imperial"
   )
     .then(function (response) {
       return response.json();
@@ -34,15 +46,15 @@ function weatherFinder(city) {
 
 //   Using the information gathered from the fetch function to display data attributes onto the web page for the user to see.
 function weatherConditions(info) {
-
   var img = document.getElementById("icon");
-  img.src = "http://openweathermap.org/img/wn/" + info.weather[0].icon + "@2x.png";
+  img.src =
+    "http://openweathermap.org/img/wn/" + info.weather[0].icon + "@2x.png";
 
+  document.getElementById("dt").innerHTML = new Date(
+    info.dt * "1000"
+  ).toDateString();
 
-  document.getElementById("dt").innerHTML = (new Date(info.dt * "1000")).toDateString();
-
-document.getElementById("icon").innerHTML =
-  info.weather[0].icon;
+  document.getElementById("icon").innerHTML = info.weather[0].icon;
   document.getElementById("location").innerHTML =
     info.name + ", " + info.sys.country;
   document.getElementById("description").innerHTML =
@@ -50,15 +62,18 @@ document.getElementById("icon").innerHTML =
     info.weather[0].description.slice(1);
   document.getElementById("temp").innerHTML = info.main.temp + "&deg;";
   document.getElementById("tempRange").innerHTML =
-    "Temperature Range: " + (info.main.temp_min + "&deg;") + " - " + (info.main.tem_max + "&deg;");
-  document.getElementById("wind").innerHTML = "Wind Speed:" +info.wind.speed + " m/s";
+    "Temperature Range: " +
+    (info.main.temp_min + "&deg;") +
+    " - " +
+    (info.main.tem_max + "&deg;");
+  document.getElementById("wind").innerHTML =
+    "Wind Speed:" + info.wind.speed + " m/s";
   document.getElementById("humidity").innerHTML =
     info.main.humidity + "% " + "Humidity";
   document.getElementById("feelsLike").innerHTML =
     "Feels like " + info.main.feels_like + "&deg;";
 
-
-
+  // Using the lat and lon from the current day function to find a five day forecast.
   var lat = info.coord.lat;
   var lon = info.coord.lon;
   fiveDayWeatherFinder(lat, lon);
@@ -73,7 +88,8 @@ function fiveDayWeatherFinder(lat, lon) {
       "&lon=" +
       lon +
       "&appid=" +
-      key + "&units=imperial"
+      key +
+      "&units=imperial"
   )
     .then(function (response) {
       return response.json();
@@ -84,39 +100,33 @@ function fiveDayWeatherFinder(lat, lon) {
     });
 }
 
+// Gathering the information and making it visible to the user.
 function fiveDayWeatherConditions(info) {
-  // var celcius = Math.round(parseFloat(d.main.temp)-273.15);
-
   for (var i = 4; i < 37; i += 8) {
-  
-    console.log(i);
-    // document.getElementById("location1").innerHTML = info.list[1].name + ", " + info.list[1].sys.country;
-
-
     var imgIcon = document.getElementById("icon" + i);
-  imgIcon.src = "http://openweathermap.org/img/wn/" + info.list[i].weather[0].icon + "@2x.png";
+    imgIcon.src =
+      "http://openweathermap.org/img/wn/" +
+      info.list[i].weather[0].icon +
+      "@2x.png";
 
-
-
-    document.getElementById("date" + i).innerHTML =
-      (new Date(info.list[i].dt * "1000")).toDateString();
+    document.getElementById("date" + i).innerHTML = new Date(
+      info.list[i].dt * "1000"
+    ).toDateString();
     document.getElementById("description" + i).innerHTML =
       info.list[i].weather[0].description.charAt(0).toUpperCase() +
       info.list[i].weather[0].description.slice(1);
-    document.getElementById("temp" + i).innerHTML = info.list[i].main.temp + "&deg;";
+    document.getElementById("temp" + i).innerHTML =
+      info.list[i].main.temp + "&deg;";
     document.getElementById("tempRange" + i).innerHTML =
-      "Temperature Range: " + (info.list[i].main.temp_min + "&deg;") + " - " + (info.list[i].main.temp_max + "&deg;");
-    document.getElementById("wind" + i).innerHTML = "Wind Speed: " + 
-      info.list[i].wind.speed + " m/s";
+      "Temperature Range: " +
+      (info.list[i].main.temp_min + "&deg;") +
+      " - " +
+      (info.list[i].main.temp_max + "&deg;");
+    document.getElementById("wind" + i).innerHTML =
+      "Wind Speed: " + info.list[i].wind.speed + " m/s";
     document.getElementById("humidity" + i).innerHTML =
       info.list[i].main.humidity + "% " + "Humidity";
     document.getElementById("feelsLike" + i).innerHTML =
       "Feels like: " + info.list[i].main.feels_like + "&deg;";
-
-
-
-      
-
-      }
   }
-
+}
