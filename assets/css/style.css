@@ -4,8 +4,28 @@ main {
 }
 
 h1 {
-    background-color: rgb(0, 194, 129);
+    background-color: rgb(4, 163, 226);
     text-align: center;
+}
+
+form {
+    background-color: rgb(153, 153, 153);
+}
+
+.searchArea {
+    background-color: rgb(153, 153, 153);
+}
+
+BUTTON {
+    background-color: rgb(0, 0, 0);
+    color: crimson;
+    font-size: 30px;
+    margin: 5px;
+    
+}
+
+#location {
+    font-size: 35px;
 }
 
 .dayDate {

@@ -5,7 +5,7 @@ var currentDay = document.getElementById("currentDay");
 var fiveDay = document.getElementById("fiveDay");
 
 // Saving the users input city and then using fetch to get the daily weather
-function saveCityName() {
+function saveCityName(inputCity) {
   inputCity = cityName.value;
   console.log(inputCity);
 
@@ -15,6 +15,7 @@ function saveCityName() {
   saveLastSearch();
 }
 
+// Fetches the weather data from a saved city search.
 function saveLastSearch() {
   var savedCity = localStorage.getItem("city");
   console.log(savedCity);
@@ -23,6 +24,14 @@ function saveLastSearch() {
   var cityButtonCity = document.createTextNode(savedCity);
   cityButton.appendChild(cityButtonCity);
   document.getElementById("savedCity").appendChild(cityButton);
+
+  cityButton.onclick = function (cityAgain) {
+    cityAgain = savedCity;
+
+    weatherFinder(cityAgain);
+
+    console.log(savedCity);
+  };
 }
 
 //  Fetching weather information for the current day from the openweather API, using a cities name
@@ -60,18 +69,18 @@ function weatherConditions(info) {
   document.getElementById("description").innerHTML =
     info.weather[0].description.charAt(0).toUpperCase() +
     info.weather[0].description.slice(1);
-  document.getElementById("temp").innerHTML = info.main.temp + "&deg;";
+  document.getElementById("temp").innerHTML = "Temp Outside: " + (info.main.temp + "&deg;");
   document.getElementById("tempRange").innerHTML =
     "Temperature Range: " +
     (info.main.temp_min + "&deg;") +
     " - " +
-    (info.main.tem_max + "&deg;");
+    (info.main.temp_max + "&deg;");
   document.getElementById("wind").innerHTML =
-    "Wind Speed:" + info.wind.speed + " m/s";
+    "Wind Speed: " + info.wind.speed + " m/s";
   document.getElementById("humidity").innerHTML =
-    info.main.humidity + "% " + "Humidity";
+    "Humidity: " + (info.main.humidity + "%");
   document.getElementById("feelsLike").innerHTML =
-    "Feels like " + info.main.feels_like + "&deg;";
+    "Feels like: " + info.main.feels_like + "&deg;";
 
   // Using the lat and lon from the current day function to find a five day forecast.
   var lat = info.coord.lat;
@@ -116,7 +125,7 @@ function fiveDayWeatherConditions(info) {
       info.list[i].weather[0].description.charAt(0).toUpperCase() +
       info.list[i].weather[0].description.slice(1);
     document.getElementById("temp" + i).innerHTML =
-      info.list[i].main.temp + "&deg;";
+    "Temp Outside: " + (info.list[i].main.temp + "&deg;");
     document.getElementById("tempRange" + i).innerHTML =
       "Temperature Range: " +
       (info.list[i].main.temp_min + "&deg;") +
@@ -125,7 +134,7 @@ function fiveDayWeatherConditions(info) {
     document.getElementById("wind" + i).innerHTML =
       "Wind Speed: " + info.list[i].wind.speed + " m/s";
     document.getElementById("humidity" + i).innerHTML =
-      info.list[i].main.humidity + "% " + "Humidity";
+      "Humidity: " + (info.list[i].main.humidity + "% ");
     document.getElementById("feelsLike" + i).innerHTML =
       "Feels like: " + info.list[i].main.feels_like + "&deg;";
   }
