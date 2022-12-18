@@ -10,6 +10,8 @@ function saveCityName() {
   console.log(inputCity);
 
   weatherFinder(inputCity);
+
+  var citySave = JSON.stringify(inputCity);
 }
 
 //  Fetching weather information for the current day from the openweather API, using a cities name
@@ -32,30 +34,12 @@ function weatherFinder(city) {
 
 //   Using the information gathered from the fetch function to display data attributes onto the web page for the user to see.
 function weatherConditions(info) {
-  // var celcius = Math.round(parseFloat(d.main.temp)-273.15);
-  // var temp = Math.round((parseFloat(info.main.temp) - 273.15) * 1.8 + 32);
-  // var tempMin = Math.round(
-  //   (parseFloat(info.main.temp_min) - 273.15) * 1.8 + 32
-  // );
-  // var tempMax = Math.round(
-  //   (parseFloat(info.main.temp_max) - 273.15) * 1.8 + 32
-  // );
-  // var feelsLike = Math.round(
-  //   (parseFloat(info.main.feels_like) - 273.15) * 1.8 + 32
-  // );
-
-
-
-
-  // document.getElementById("date" + i).innerHTML =
-  // info.list[i].dt_txt;
-
 
   var img = document.getElementById("icon");
   img.src = "http://openweathermap.org/img/wn/" + info.weather[0].icon + "@2x.png";
 
 
-
+  document.getElementById("dt").innerHTML = (new Date(info.dt * "1000")).toDateString();
 
 document.getElementById("icon").innerHTML =
   info.weather[0].icon;
@@ -103,8 +87,9 @@ function fiveDayWeatherFinder(lat, lon) {
 function fiveDayWeatherConditions(info) {
   // var celcius = Math.round(parseFloat(d.main.temp)-273.15);
 
-  for (var i = 1; i < 6; i++) {
+  for (var i = 4; i < 37; i += 8) {
   
+    console.log(i);
     // document.getElementById("location1").innerHTML = info.list[1].name + ", " + info.list[1].sys.country;
 
 
@@ -114,7 +99,7 @@ function fiveDayWeatherConditions(info) {
 
 
     document.getElementById("date" + i).innerHTML =
-      info.list[i].dt_txt;
+      (new Date(info.list[i].dt * "1000")).toDateString();
     document.getElementById("description" + i).innerHTML =
       info.list[i].weather[0].description.charAt(0).toUpperCase() +
       info.list[i].weather[0].description.slice(1);
