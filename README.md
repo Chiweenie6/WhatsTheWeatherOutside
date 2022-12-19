@@ -15,7 +15,10 @@ N/A
 ## Usage
 To see the weather outside in multiple locations.
 
-Image:!
+Image:![image](https://user-images.githubusercontent.com/113393706/208329848-9d6bf22b-2f3f-4de9-b75b-350c9aaed316.png)
+Image: ![image](https://user-images.githubusercontent.com/113393706/208329884-740dee04-f9ad-4358-a1a2-87c5cd7fa2e9.png)
+Image: ![image](https://user-images.githubusercontent.com/113393706/208329916-5c649c4a-5362-49fd-9ef8-c6bad46d7964.png)
+
 
 
 ## Credits
