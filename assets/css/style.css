@@ -18,37 +18,52 @@ form {
 
 BUTTON {
     background-color: rgb(0, 0, 0);
-    color: crimson;
+    color: darkorange;
     font-size: 30px;
     margin: 5px;
     
 }
 
-#location {
-    font-size: 35px;
-}
-
 .dayDate {
-    background-color: rgb(194, 129, 255);
+    background-color: rgb(121, 0, 151);
+    color: rgb(255, 255, 255);
 }
 
 .nextFiveDays h2 {
     background-color: rgb(255, 252, 71);
+    border-radius: 50px;
+    text-align: center;
+    padding: 5px;
+    border-style: solid;
 }
 
 .theWeather {
     margin: 20px;
+    text-align: center;
 }
 
 .currentDay {
     background-color: forestgreen;
-    
+    border-radius: 50px;
+    text-align: center;
+    padding: 5px;
+    border-style: solid;
+}
+
+#currentDay {
+    font-size: 20px;
+    align-items: center;
 }
 
 #location {
     background-color: darkorange;
+    font-size: 35px;
+    border-radius: 50px;
+    text-align: center;
+    padding: 5px;
+    border-style: solid;
 }
 
-.nextFive {
-    background-color: darkcyan;
+#day1 {
+    align-items: center;
 }

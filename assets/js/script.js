@@ -4,6 +4,19 @@ var cityName = document.getElementById("cityName");
 var currentDay = document.getElementById("currentDay");
 var fiveDay = document.getElementById("fiveDay");
 
+
+// the search button won't engage until something is typed in the search box
+searchButton.disabled = true;
+cityName.addEventListener("change", workingButton);
+
+function workingButton() {
+  if (document.getElementById("cityName").value === "") {
+    searchButton.disabled = true;
+  } else {
+    searchButton.disabled = false;
+  }
+}
+
 // Saving the users input city and then using fetch to get the daily weather
 function saveCityName(inputCity) {
   inputCity = cityName.value;
