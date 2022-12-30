@@ -4,7 +4,6 @@ var cityName = document.getElementById("cityName");
 var currentDay = document.getElementById("currentDay");
 var fiveDay = document.getElementById("fiveDay");
 
-
 // the search button won't engage until something is typed in the search box
 searchButton.disabled = true;
 cityName.addEventListener("change", workingButton);
@@ -16,36 +15,78 @@ function workingButton() {
     searchButton.disabled = false;
   }
 }
+// Can use enter key to search for a city name.
+cityName.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("searchButton").click();
+  }
+});
 
-// Saving the users input city and then using fetch to get the daily weather
+// Loads the old searches that were saved in the local storage.
+function bringBackSearch() {
+  if (localStorage.getItem("city") === null) {
+  } else {
+    saveLastSearch();
+  }
+}
+
+// Saving the users input city to local storage and then using fetch to get the daily weather.
+var saveCityNameList = [];
 function saveCityName(inputCity) {
   inputCity = cityName.value;
   console.log(inputCity);
 
   weatherFinder(inputCity);
-
-  localStorage.setItem("city", inputCity);
+  
+  saveCityNameList.push(inputCity);
+  localStorage.setItem("city", JSON.stringify(saveCityNameList));
   saveLastSearch();
+
+  console.log(saveCityNameList);
 }
+
 
 // Fetches the weather data from a saved city search.
 function saveLastSearch() {
-  var savedCity = localStorage.getItem("city");
-  console.log(savedCity);
+  document.getElementById("savedCity").innerHTML = "";
+  var lastSearch = "";
+  var savedCity = JSON.parse(localStorage.getItem("city"));
 
+  for (var i = 0; i < savedCity.length; i++) {
+    lastSearch = savedCity[i];
+  }
+  console.log(savedCity.length);
+  console.log(savedCity);
+  console.log(lastSearch);
+
+  
   var cityButton = document.createElement("BUTTON");
-  var cityButtonCity = document.createTextNode(savedCity);
+  var cityButtonCity = document.createTextNode(lastSearch);
   cityButton.appendChild(cityButtonCity);
   document.getElementById("savedCity").appendChild(cityButton);
+  
+
+  
 
   cityButton.onclick = function (cityAgain) {
-    cityAgain = savedCity;
+    cityAgain = lastSearch;
 
     weatherFinder(cityAgain);
 
-    console.log(savedCity);
+    console.log(lastSearch);
   };
 }
+
+// Button to clear the local storage.
+var clearStorageBtn = document.getElementById("clearStorage");
+clearStorageBtn.addEventListener("click", function () {
+  localStorage.clear();
+  var clearOldSearches = document.getElementById("savedCity");
+  while (clearOldSearches.hasChildNodes()) {
+    clearOldSearches.removeChild(clearOldSearches.firstChild);
+  }
+});
 
 //  Fetching weather information for the current day from the openweather API, using a cities name
 function weatherFinder(city) {
@@ -82,7 +123,8 @@ function weatherConditions(info) {
   document.getElementById("description").innerHTML =
     info.weather[0].description.charAt(0).toUpperCase() +
     info.weather[0].description.slice(1);
-  document.getElementById("temp").innerHTML = "Temp Outside: " + (info.main.temp + "&deg;");
+  document.getElementById("temp").innerHTML =
+    "Temp Outside: " + (info.main.temp + "&deg;");
   document.getElementById("tempRange").innerHTML =
     "Temperature Range: " +
     (info.main.temp_min + "&deg;") +
@@ -138,7 +180,7 @@ function fiveDayWeatherConditions(info) {
       info.list[i].weather[0].description.charAt(0).toUpperCase() +
       info.list[i].weather[0].description.slice(1);
     document.getElementById("temp" + i).innerHTML =
-    "Temp Outside: " + (info.list[i].main.temp + "&deg;");
+      "Temp Outside: " + (info.list[i].main.temp + "&deg;");
     document.getElementById("tempRange" + i).innerHTML =
       "Temperature Range: " +
       (info.list[i].main.temp_min + "&deg;") +

@@ -10,7 +10,7 @@
     <title>Whats the Weather Outside?</title>
 </head>
 
-<body class="">
+<body onload="bringBackSearch()">
 
     <div>
         <h1>☀️The Weather Outside🌦️</h1>
@@ -23,12 +23,13 @@
                 <div class="container-fluid">
                     <a class="navbar-brand">City Name</a>
                     <form id="cityFind" class="d-flex" role="search">
-                        <input id="cityName" class="form-control me-2" type="search" placeholder="Search"
+                        <input id="cityName" class="form-control me-2" type="search" placeholder="City Name"
                             aria-label="Search">
                         <button id="searchButton" class="btn btn-outline-success" type="button"
                             onclick="saveCityName()">Find City</button>
                     </form>
                 </div>
+                <button id="clearStorage">Clear Search History</button>
             </nav>
 
             <div id="oldSearch" class="col-3 list-group">

@@ -21,7 +21,11 @@ BUTTON {
     color: darkorange;
     font-size: 30px;
     margin: 5px;
-    
+}
+
+#clearStorage {
+    font-size: 15px;
+    color: red;
 }
 
 .dayDate {
