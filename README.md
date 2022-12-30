@@ -5,7 +5,7 @@ An application to see the weather conditions in different locations.
 ## Description
 Once the user types in a cities name the weather forcast will then be pulled from a third party API to show the weather outside. The application shows the current weather as well as a 5 day forecast into the future. The cities typed into the search box are then locally stored so the user can easily look again at the weather in a location already typed into the search area.
 
-The deployed URL - 
+The deployed URL - https://chiweenie6.github.io/WhatsTheWeatherOutside/
 
 
 ## Installation
@@ -15,7 +15,10 @@ N/A
 ## Usage
 To see the weather outside in multiple locations.
 
-Image:!
+Image:![image](https://user-images.githubusercontent.com/113393706/208329848-9d6bf22b-2f3f-4de9-b75b-350c9aaed316.png)
+Image: ![image](https://user-images.githubusercontent.com/113393706/208329884-740dee04-f9ad-4358-a1a2-87c5cd7fa2e9.png)
+Image: ![image](https://user-images.githubusercontent.com/113393706/208329916-5c649c4a-5362-49fd-9ef8-c6bad46d7964.png)
+
 
 
 ## Credits
