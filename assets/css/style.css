@@ -23,6 +23,10 @@ BUTTON {
     margin: 5px;
 }
 
+BUTTON:hover {
+    box-shadow: 10px 10px 10px whitesmoke;
+}
+
 #clearStorage {
     font-size: 15px;
     color: red;

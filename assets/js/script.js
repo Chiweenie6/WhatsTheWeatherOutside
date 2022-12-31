@@ -23,7 +23,7 @@ cityName.addEventListener("keypress", function (event) {
   }
 });
 
-// Loads the old searches that were saved in the local storage.
+// Loads the old searches onto the page that were saved in the local storage.
 function bringBackSearch() {
   if (localStorage.getItem("city") === null) {
   } else {
@@ -47,7 +47,7 @@ function saveCityName(inputCity) {
 }
 
 
-// Fetches the weather data from a saved city search.
+// Fetches the weather data from a saved city search that was saved in the local storage.
 function saveLastSearch() {
   document.getElementById("savedCity").innerHTML = "";
   var lastSearch = "";
@@ -55,28 +55,25 @@ function saveLastSearch() {
 
   for (var i = 0; i < savedCity.length; i++) {
     lastSearch = savedCity[i];
-  }
+  
   console.log(savedCity.length);
   console.log(savedCity);
   console.log(lastSearch);
 
   
   var cityButton = document.createElement("BUTTON");
+  cityButton.setAttribute("type", "button");
   var cityButtonCity = document.createTextNode(lastSearch);
   cityButton.appendChild(cityButtonCity);
   document.getElementById("savedCity").appendChild(cityButton);
-  
 
-  
-
-  cityButton.onclick = function (cityAgain) {
-    cityAgain = lastSearch;
-
-    weatherFinder(cityAgain);
-
-    console.log(lastSearch);
+  cityButton.addEventListener("click", function () {
+    
+    weatherFinder(this.innerText);
+    console.log(this)
+});
+  }
   };
-}
 
 // Button to clear the local storage.
 var clearStorageBtn = document.getElementById("clearStorage");
